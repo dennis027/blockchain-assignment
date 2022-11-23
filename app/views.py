@@ -107,7 +107,7 @@ def mine_block(request):
         previous_hash = blockchain.hash(previous_block)
         blockchain.add_transaction(sender = root_node, receiver = node_address, amount = 1.15, time=str(datetime.datetime.now()))
         block = blockchain.create_block(nonce, previous_hash)
-        response = {'message': 'Congratulations, you just mined a block!',
+        response = {'message': 'Congratulations, you just made a transaction of charity!',
                     'index': block['index'],
                     'timestamp': block['timestamp'],
                     'nonce': block['nonce'],
@@ -154,7 +154,7 @@ def connect_node(request):
             return "No node", HttpResponse(status=400)
         for node in nodes:
             blockchain.add_node(node)
-        response = {'message': 'All the nodes are now connected. The Sudocoin Blockchain now contains the following nodes:',
+        response = {'message': 'All the nodes are now connected. The Charity Blockchain now contains the following nodes:',
                     'total_nodes': list(blockchain.nodes)}
     return JsonResponse(response)
 
