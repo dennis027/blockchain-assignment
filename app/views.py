@@ -7,7 +7,7 @@ import socket
 from urllib.parse import urlparse
 from django.http import JsonResponse, HttpResponse, HttpRequest
 from django.views.decorators.csrf import csrf_exempt
-
+import requests
 
 class Blockchain:
 
@@ -107,7 +107,7 @@ def mine_block(request):
         previous_hash = blockchain.hash(previous_block)
         blockchain.add_transaction(sender = root_node, receiver = node_address, amount = 1.15, time=str(datetime.datetime.now()))
         block = blockchain.create_block(nonce, previous_hash)
-        response = {'message': 'Congratulations, you just made a transaction of charity!',
+        response = {'message': 'Congratulations, you just made a transaction for charity!',
                     'index': block['index'],
                     'timestamp': block['timestamp'],
                     'nonce': block['nonce'],
